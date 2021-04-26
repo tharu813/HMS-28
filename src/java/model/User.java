@@ -11,7 +11,7 @@ package model;
  */
 public class User {
     
-    private String userId, username, nic, firstName, lastNname, email, password, contactNo;
+    private String userId, username, nic, firstName, lastName, email, password, contactNo;
     private int userType;
 
     public String getUserId() {
@@ -30,8 +30,8 @@ public class User {
         return firstName;
     }
 
-    public String getLastNname() {
-        return lastNname;
+    public String getLastName() {
+        return lastName;
     }
 
     public String getEmail() {
@@ -66,8 +66,8 @@ public class User {
         this.firstName = firstName;
     }
 
-    public void setLastNname(String lastNname) {
-        this.lastNname = lastNname;
+    public void setLastName(String lastNname) {
+        this.lastName = lastNname;
     }
 
     public void setEmail(String email) {
