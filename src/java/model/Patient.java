@@ -13,7 +13,6 @@ import java.sql.Date;
  */
 public class Patient extends User {
 
-    private String patient_id;
     private int age;
     private Date dob;
     private int house_no;
@@ -21,14 +20,18 @@ public class Patient extends User {
     private String city;
     private String registered_by;
 
-    public Patient(String userId, String username, String nic, String firstName, String lastName, String email, String password, String contactNo, int userType) {
+    public Patient(int age, Date dob, int house_no, String street, String city, String registered_by, String userId, String username, String nic, String firstName, String lastName, String email, String password, String contactNo, int userType) {
         super(userId, username, nic, firstName, lastName, email, password, contactNo, userType);
+        this.age = age;
+        this.dob = dob;
+        this.house_no = house_no;
+        this.street = street;
+        this.city = city;
+        this.registered_by = registered_by;
     }
-
-    public String getPatient_id() {
-        return patient_id;
-    }
-
+    
+    
+    
     public int getAge() {
         return age;
     }
@@ -51,10 +54,6 @@ public class Patient extends User {
 
     public String getRegistered_by() {
         return registered_by;
-    }
-
-    public void setPatient_id(String patient_id) {
-        this.patient_id = patient_id;
     }
 
     public void setAge(int age) {
