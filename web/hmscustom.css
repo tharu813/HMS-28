@@ -1,0 +1,10 @@
+.doc-viewPat-button a:link, a:visited {
+    padding: 5%;
+    background-color: gray; 
+    color: white;
+    text-decoration: none;
+}
+
+.doc-viewPat-button a:hover, a:active {
+    background-color: black;
+}

@@ -1,0 +1,111 @@
+<%-- 
+    Document   : doctor-viewPatient
+    Created on : Apr 26, 2021, 7:34:52 PM
+    Author     : THARUSHI
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="bootstrap-4.6.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="hmscustom.css">
+
+    <script src="bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+
+    <title>Doctor</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
+        <div class="navbar-brand">
+            <span id="doctorFullName">${user.getFirstName()} ${user.getLastName()}</span>
+            <span id="doctorTitle">(Psychiatrist)</span>
+        </div>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Appointments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">My Account</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="patientInfo" style="margin-left: 1%; margin-right: 1%;">
+
+        <div id="patientProfile">
+            <div class="row">
+                <div class="col">
+                    <h2>Patient: ${patient.getFirstName()}</h2>
+                </div>
+            </div>
+            <div class="row">
+                <ul style="list-style-type: none;">
+                    <li id="patientDOB">DOB: 14/10/1997</li>
+                    <li id="patientGender">Gender: M</li>
+                </ul>
+            </div>
+        </div>
+
+        <hr>
+
+        <div id="medialRecords">
+            <div class="row">
+                <div class="col-10">
+                    <h2>Medical Records</h2>
+                </div>
+                <div class="col-2 doc-viewPat-button"><a href="">Add Record</a></div>
+            </div>
+            <div class="row">
+            </div>
+        </div>
+
+        <hr>
+
+        <div id="diagnostics">
+            <div class="row">
+                <div class="col-10">
+                    <h2>Diagnostics</h2>
+                </div>
+                <div class="col-2 doc-viewPat-button"><a href="">Add Diagnosis</a></div>
+            </div>
+            <div class="row">
+            </div>
+        </div>
+
+        <hr>
+
+        <div id="labReports">
+            <div class="row">
+                <div class="col-10">
+                    <h2>Lab Reports</h2>
+                </div>
+                <div class="col-2 doc-viewPat-button"><a href="">Request New Report</a></div>
+            </div>
+            <div class="row">
+            </div>
+        </div>
+
+        <hr>
+
+        <div id="prescriptions">
+            <div class="row">
+                <div class="col-10">
+                    <h2>Prescriptions</h2>
+                </div>
+                <div class="col-2 doc-viewPat-button"><a href="">Add Prescription</a></div>
+            </div>
+            <div class="row">
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
