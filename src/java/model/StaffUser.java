@@ -14,8 +14,12 @@ public abstract class StaffUser extends User {
     private String title;
     private String department;
 
-    public StaffUser(String userId, String username, String nic, String firstName, String lastName, String email, String password, String contactNo, int userType) {
+    public StaffUser(String userId, String username, String nic, String firstName, 
+            String lastName, String email, String password, String contactNo, int userType,
+            String title, String department) {
         super(userId, username, nic, firstName, lastName, email, password, contactNo, userType);
+        this.title = title;
+        this.department = department;
     }
     
     public String getTitle() {
