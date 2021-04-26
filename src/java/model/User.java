@@ -9,11 +9,23 @@ package model;
  *
  * @author THARUSHI
  */
-public class User {
+public abstract class User {
     
     private String userId, username, nic, firstName, lastName, email, password, contactNo;
     private int userType;
 
+    public User(String userId, String username, String nic, String firstName, String lastName, String email, String password, String contactNo, int userType) {
+        this.userId = userId;
+        this.username = username;
+        this.nic = nic;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.contactNo = contactNo;
+        this.userType = userType;
+    }
+        
     public String getUserId() {
         return userId;
     }

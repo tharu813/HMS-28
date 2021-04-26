@@ -9,17 +9,13 @@ package model;
  *
  * @author THARUSHI
  */
-public class Doctor {
+public class Doctor extends StaffUser{
     
-    private String doctorId, specialization;
+    private String specialization;
     private int slmcNo;
-    
-    public void setDoctorId(String docId){
-        this.doctorId = docId;
-    }
-    
-    public String getId(){
-        return doctorId;
+
+    public Doctor(String userId, String username, String nic, String firstName, String lastName, String email, String password, String contactNo, int userType) {
+        super(userId, username, nic, firstName, lastName, email, password, contactNo, userType);
     }
     
     public void setSpecialization(String specialization){
