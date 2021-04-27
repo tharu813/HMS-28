@@ -19,6 +19,10 @@ public class Patient extends User {
     private String street;
     private String city;
     private String registered_by;
+    
+    public Patient(){
+        super();
+    }
 
     public Patient(int age, Date dob, int house_no, String street, String city, String registered_by, String userId, String username, String nic, String firstName, String lastName, String email, String password, String contactNo, int userType) {
         super(userId, username, nic, firstName, lastName, email, password, contactNo, userType);

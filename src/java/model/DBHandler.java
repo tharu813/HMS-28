@@ -176,10 +176,10 @@ public class DBHandler {
         }
         return null;
     }*/
-    public int addEMR(MedicalRecord emr) throws SQLException, ClassNotFoundException {
+    public int addEMR(MedicalRecord emr, Patient p) throws SQLException, ClassNotFoundException {
 
         int status = 0;
-        try {
+        try {         
             
             
             Connection con = createConnection();
@@ -191,7 +191,7 @@ public class DBHandler {
             ps.setString(4, emr.getAllergies());
             ps.setString(5, emr.getDiagnosis());
             ps.setString(6, emr.getMedication());
-            ps.setString(7, "");
+            ps.setString(7, p.getUserId());
 
             status = ps.executeUpdate();
             con.close();

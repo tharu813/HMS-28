@@ -509,13 +509,10 @@
             <div class="workinghny-block-grid">
                 <div class="form-right-inf">
                     <h2>Login </h2>
-                    <div class="social-media">
-                        <a class="fb">Login to get marvelous benefits</a>
-                        <a  class="tw">Welcome</a>
-                    </div>
+                   
                     <div class="login-form-content">
                         <h2>Login with username</h2>
-                        <form action="loginServlet" class="signin-form" method="post">
+                        <form action="patientLoginServlet" class="signin-form" method="post">
                             <div class="one-frm">
                                 <input type="text" name="username" placeholder="username" required="" autofocus>
                             </div>
@@ -525,7 +522,7 @@
 
                             <button class="btn btn-style mt-3">Login </button>
 
-                            <p class="already">Are you a staff?<a href="login.jsp">Sign in</a></p>
+                            <p class="already">Are you a staff member?<a href="login.jsp">Sign in</a></p>
                         </form>
                     </div>
                 </div>

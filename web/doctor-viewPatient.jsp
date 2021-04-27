@@ -4,6 +4,8 @@
     Author     : THARUSHI
 --%>
 
+
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,9 +70,9 @@
                 <div class="row">
                     <form action = "AddEMRServlet" method = "POST">
                         <table>
-                            <tr><td>Blood Pressure Level : </td><td><input type="text" name = "bp_level"/></td></tr>
-                            <tr><td>Weight: </td><td><input type="text" name = "weight"/></td></tr>
-                            <tr><td>Height: </td><td><input type="text" name = "height"/></td></tr>
+                            <tr><td>Blood Pressure Level (mmHg): </td><td><input type="text" name = "bp_level"/></td></tr>
+                            <tr><td>Weight (kg): </td><td><input type="text" name = "weight"/></td></tr>
+                            <tr><td>Height(cm): </td><td><input type="text" name = "height"/></td></tr>
                             <tr><td>Allergies: </td><td><input type="text" name = "allergies"/></td></tr>
                             <tr><td>Diagnosis: </td><td><input type="text" name = "diagnosis"/></td></tr>
                             <tr><td>Medication: </td><td><input type="text" name = "medication"/></td></tr>  

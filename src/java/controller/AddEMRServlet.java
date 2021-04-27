@@ -77,7 +77,10 @@ public class AddEMRServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
+        Patient patient = (Patient) RequestHandler.retrieveAttribute(request, "patient");
+        String patientID = patient.getUserId();
+        System.out.println(patientID);
 
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
@@ -87,10 +90,10 @@ public class AddEMRServlet extends HttpServlet {
         String allergies = request.getParameter("allergies");
         String diagnosis = request.getParameter("diagnosis");
         String medication = request.getParameter("medication");
-        
+
         try {
             DBHandler dbObj = new DBHandler();
-            
+
             MedicalRecord emr = new MedicalRecord();
             emr.setBp_level(bp_level);
             emr.setWeight(weight);
@@ -98,11 +101,11 @@ public class AddEMRServlet extends HttpServlet {
             emr.setAllergies(allergies);
             emr.setDiagnosis(diagnosis);
             emr.setMedication(medication);
-            
-            
-            int status = dbObj.addEMR(emr);
+            emr.setPatient_id(medication);
+
+            int status = dbObj.addEMR(emr, patient);
             if (status > 0) {
-                out.println("Medical Record was added Successfully!");
+                out.println("<h1><center>Medical Record was added Successfully!</h1>");
                 RequestDispatcher req = request.getRequestDispatcher("doctor-viewPatient.jsp");
                 req.include(request, response);
             } else {
@@ -111,9 +114,8 @@ public class AddEMRServlet extends HttpServlet {
 
         } catch (NumberFormatException se) {
             System.out.print(se);
-        }
-        catch(Exception e){
-        System.out.print(e);
+        } catch (Exception e) {
+            System.out.print(e);
         }
 
     }

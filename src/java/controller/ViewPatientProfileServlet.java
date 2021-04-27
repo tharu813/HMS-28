@@ -87,7 +87,7 @@ public class ViewPatientProfileServlet extends HttpServlet {
         try {
             
             Patient p = db.fetchPatient(uname);
-            request.setAttribute("patient", p);  
+            RequestHandler.addAttribute(request, "patient", p);
             request.getRequestDispatcher("doctor-viewPatient.jsp").forward(request, response);
             
         } catch (SQLException ex) {
