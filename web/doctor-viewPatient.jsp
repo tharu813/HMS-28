@@ -70,11 +70,10 @@
                     <form action = "AddEMRServlet" method = "POST">           
 <!--                            <tr><td><input type="submit" name="Add Record" value="Add Record"></td></tr>-->
                     <table>
-                        
-                        
+                    
                     <label for="blp">Blood Pressure Level:</label>
                         <input type="bloodpressure" class="form-control" id="inputbpl" aria-describedby="bpl" placeholder="Enter Blood Pressure Level">
-                      
+                        
                     
                     <label for="blp">Weight:</label>
                         <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">   
@@ -89,10 +88,16 @@
                         <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">   
                     
                     <label for="blp">Medication:</label>
-                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">                    
-                
+                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">  
+                        <br>
+                  <div class="container">
+             <div class="row">
+               <div class="col">
+                <a href="#!" class="btn btn-primary btn-sm">Submit Records</a>
+                     </div>
+                        </div>
                         
-                    </form>
+                    </form>    
                     </table>
                     </ul>
 
