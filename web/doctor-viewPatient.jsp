@@ -8,39 +8,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <style>
-input[type=text], select {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-input[type=submit] {
-  width: 100%;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-input[type=submit]:hover {
-  background-color: #45a049;
-}
-
-div {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-}
-</style>
-    
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -99,24 +66,37 @@ div {
                     <div class="col-2 doc-viewPat-button"><a href="">Add Record</a></div>
                 </div>
                 <div class="row">
-                    <form action = "AddEMRServlet" method = "POST">
-                        <table>
-                            <tr><td>Blood Pressure Level : </td><td><input type="text" name = "bp_level"/></td></tr>
-                            <tr><td>Weight: </td><td><input type="text" name = "weight"/></td></tr>
-                            <tr><td>Height: </td><td><input type="text" name = "height"/></td></tr>
-                            <tr><td>Allergies: </td><td><input type="text" name = "allergies"/></td></tr>
-                            <tr><td>Diagnosis: </td><td><input type="text" name = "diagnosis"/></td></tr>
-                            <tr><td>Medication: </td><td><input type="text" name = "medication"/></td></tr>  
-                            <tr><td><input type="submit" name="Add Record" value="Add Record"></td></tr>
-
-                        </table>
-
+                    <ul style="list-style-type: none;">
+                    <form action = "AddEMRServlet" method = "POST">           
+<!--                            <tr><td><input type="submit" name="Add Record" value="Add Record"></td></tr>-->
+                    <table>
+                        
+                        
+                    <label for="blp">Blood Pressure Level:</label>
+                        <input type="bloodpressure" class="form-control" id="inputbpl" aria-describedby="bpl" placeholder="Enter Blood Pressure Level">
+                      
+                    
+                    <label for="blp">Weight:</label>
+                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">   
+                       
+                    <label for="blp">Height:</label>
+                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">   
+                    
+                    <label for="blp">Allergies:</label>
+                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">   
+                    
+                    <label for="blp">Diagnosis:</label>
+                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">   
+                    
+                    <label for="blp">Medication:</label>
+                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">                    
+                
+                        
                     </form>
+                    </table>
+                    </ul>
 
                 </div>
-  </form>
-</div>
-
             </div>
 
             <hr>
