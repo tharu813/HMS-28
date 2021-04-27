@@ -11,23 +11,48 @@ package model;
  */
 public class MedicalRecord {
     
-    private String emr_id;
+    private int emr_id;
     private String bp_level;
     private int height;
     private int weight; 
     private String allergies;
     private String patient_id;
+    private String diagnosis;
+    private String medication;
 
-    public MedicalRecord(String emr_id, String bp_level, int height, int weight, String allergies, String patient_id) {
+    public MedicalRecord(){
+    
+    }
+
+    public MedicalRecord(int emr_id, String bp_level, int height, int weight, String allergies, String patient_id, String diagnosis, String medication) {
         this.emr_id = emr_id;
         this.bp_level = bp_level;
         this.height = height;
         this.weight = weight;
         this.allergies = allergies;
         this.patient_id = patient_id;
+        this.diagnosis = diagnosis;
+        this.medication = medication;
     }
 
-    public String getEmr_id() {
+    public String getDiagnosis() {
+        return diagnosis;
+    }
+
+    public String getMedication() {
+        return medication;
+    }
+
+    public void setDiagnosis(String diagnosis) {
+        this.diagnosis = diagnosis;
+    }
+
+    public void setMedication(String medication) {
+        this.medication = medication;
+    }
+    
+   
+    public int getEmr_id() {
         return emr_id;
     }
 
@@ -51,7 +76,7 @@ public class MedicalRecord {
         return patient_id;
     }
 
-    public void setEmr_id(String emr_id) {
+    public void setEmr_id(int emr_id) {
         this.emr_id = emr_id;
     }
 

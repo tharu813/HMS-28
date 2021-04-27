@@ -29,7 +29,7 @@ public class Patient extends User {
         this.city = city;
         this.registered_by = registered_by;
     }
-    
+
     
     
     public int getAge() {

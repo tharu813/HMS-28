@@ -14,19 +14,19 @@ import java.sql.Time;
  */
 public class Consultation_info {
 
-    private String consultation_id;
+    private int consultation_id;
     private int fee;
     Time time;
     Date date;
 
-    public Consultation_info(String consultation_id, int fee, Time time, Date date) {
+    public Consultation_info(int consultation_id, int fee, Time time, Date date) {
         this.consultation_id = consultation_id;
         this.fee = fee;
         this.time = time;
         this.date = date;
     }
 
-    public void setConsultation_id(String consultation_id) {
+    public void setConsultation_id(int consultation_id) {
         this.consultation_id = consultation_id;
     }
 
@@ -42,7 +42,7 @@ public class Consultation_info {
         this.date = date;
     }
 
-    public String getConsultation_id() {
+    public int getConsultation_id() {
         return consultation_id;
     }
 

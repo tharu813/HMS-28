@@ -15,15 +15,15 @@ import java.sql.Date;
 public class LabReport {
     
    
-private String ref_id;
+private int ref_id;
 private String patient_id;
 private String doctor_id;
 private Date date;
 private String test_requested; 
-private File result; 
+private String result; 
 private short state;
 
-    public LabReport(String ref_id, String patient_id, String doctor_id, Date date, String test_requested, File result, short state) {
+    public LabReport(int ref_id, String patient_id, String doctor_id, Date date, String test_requested, String result, short state) {
         this.ref_id = ref_id;
         this.patient_id = patient_id;
         this.doctor_id = doctor_id;
@@ -33,7 +33,7 @@ private short state;
         this.state = state;
     }
 
-    public String getRef_id() {
+    public int getRef_id() {
         return ref_id;
     }
 
@@ -53,7 +53,7 @@ private short state;
         return test_requested;
     }
 
-    public File getResult() {
+    public String getResult() {
         return result;
     }
 
@@ -61,7 +61,7 @@ private short state;
         return state;
     }
 
-    public void setRef_id(String ref_id) {
+    public void setRef_id(int ref_id) {
         this.ref_id = ref_id;
     }
 
@@ -81,7 +81,7 @@ private short state;
         this.test_requested = test_requested;
     }
 
-    public void setResult(File result) {
+    public void setResult(String result) {
         this.result = result;
     }
 

@@ -9,10 +9,14 @@ package model;
  *
  * @author THARUSHI
  */
-public abstract class User {
+public class User {
     
     private String userId, username, nic, firstName, lastName, email, password, contactNo;
     private int userType;
+    
+    public User(){
+    
+    }
 
     public User(String userId, String username, String nic, String firstName, String lastName, String email, String password, String contactNo, int userType) {
         this.userId = userId;
@@ -25,7 +29,7 @@ public abstract class User {
         this.contactNo = contactNo;
         this.userType = userType;
     }
-        
+      
     public String getUserId() {
         return userId;
     }

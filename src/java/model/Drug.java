@@ -13,11 +13,12 @@ public class Drug {
     private String drug;
     private int prescription_id;
 
-    public Drug(String drug, int prescription_id) {
+    public Drug(int prescription_id, String drug) {
         this.drug = drug;
         this.prescription_id = prescription_id;
     }
 
+    
     public String getDrug() {
         return drug;
     }
