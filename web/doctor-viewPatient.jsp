@@ -8,104 +8,151 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
 
-    <link rel="stylesheet" href="bootstrap-4.6.0-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="hmscustom.css">
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
-    <script src="bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+input[type=submit]:hover {
+  background-color: #45a049;
+}
 
-    <title>Doctor</title>
-</head>
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<body>
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
-        <div class="navbar-brand">
-            <span id="doctorFullName">${user.getFirstName()} ${user.getLastName()}</span>
-            <span id="doctorTitle">(Psychiatrist)</span>
-        </div>
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Appointments</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">My Account</a>
-            </li>
-        </ul>
-    </nav>
+        <link rel="stylesheet" href="bootstrap-4.6.0-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="hmscustom.css">
 
-    <div id="patientInfo" style="margin-left: 1%; margin-right: 1%;">
+        <script src="bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
 
-        <div id="patientProfile">
-            <div class="row">
-                <div class="col">
-                    <h2>Patient: ${patient.getFirstName()}</h2>
+        <title>Doctor</title>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
+            <div class="navbar-brand">
+                <span id="doctorFullName">${user.getFirstName()} ${user.getLastName()}</span>
+                <span id="doctorTitle">(Psychiatrist)</span>
+            </div>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Appointments</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">My Account</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="patientInfo" style="margin-left: 1%; margin-right: 1%;">
+
+            <div id="patientProfile">
+                <div class="row">
+                    <div class="col">
+                        <h2>Patient: ${patient.getFirstName()}</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <ul style="list-style-type: none;">
+                        <li id="patientDOB">DOB: ${patient.getDob()}</li>
+                        <li id="address">Address: ${patient.getHouse_no()}, ${patient.getHouse_no()}, ${patient.getStreet()}, ${patient.getCity()}</li>
+                        <li id="age">DOB: ${patient.getAge()}</li>
+                        <li id="email">Email: ${patient.getEmail()}</li>
+                        <!--li id="patientGender">Gender: M</li-->
+                    </ul>
                 </div>
             </div>
-            <div class="row">
-                <ul style="list-style-type: none;">
-                    <li id="patientDOB">DOB: 14/10/1997</li>
-                    <li id="patientGender">Gender: M</li>
-                </ul>
-            </div>
-        </div>
 
-        <hr>
+            <hr>
 
-        <div id="medialRecords">
-            <div class="row">
-                <div class="col-10">
-                    <h2>Medical Records</h2>
+            <div id="medialRecords">
+                <div class="row">
+                    <div class="col-10">
+                        <h2>Medical Records</h2>
+                    </div>
+                    <div class="col-2 doc-viewPat-button"><a href="">Add Record</a></div>
                 </div>
-                <div class="col-2 doc-viewPat-button"><a href="">Add Record</a></div>
-            </div>
-            <div class="row">
-            </div>
-        </div>
+                <div class="row">
+                    <form action = "AddEMRServlet" method = "POST">
+                        <table>
+                            <tr><td>Blood Pressure Level : </td><td><input type="text" name = "bp_level"/></td></tr>
+                            <tr><td>Weight: </td><td><input type="text" name = "weight"/></td></tr>
+                            <tr><td>Height: </td><td><input type="text" name = "height"/></td></tr>
+                            <tr><td>Allergies: </td><td><input type="text" name = "allergies"/></td></tr>
+                            <tr><td>Diagnosis: </td><td><input type="text" name = "diagnosis"/></td></tr>
+                            <tr><td>Medication: </td><td><input type="text" name = "medication"/></td></tr>  
+                            <tr><td><input type="submit" name="Add Record" value="Add Record"></td></tr>
 
-        <hr>
+                        </table>
 
-        <div id="diagnostics">
-            <div class="row">
-                <div class="col-10">
-                    <h2>Diagnostics</h2>
+                    </form>
+
                 </div>
-                <div class="col-2 doc-viewPat-button"><a href="">Add Diagnosis</a></div>
-            </div>
-            <div class="row">
-            </div>
-        </div>
+  </form>
+</div>
 
-        <hr>
+            </div>
 
-        <div id="labReports">
-            <div class="row">
-                <div class="col-10">
-                    <h2>Lab Reports</h2>
+            <hr>
+
+            <div id="labReports">
+                <div class="row">
+                    <div class="col-10">
+                        <h2>Lab Reports</h2>
+                    </div>
+                    <div class="col-2 doc-viewPat-button"><a href="">Request New Report</a></div>
                 </div>
-                <div class="col-2 doc-viewPat-button"><a href="">Request New Report</a></div>
-            </div>
-            <div class="row">
-            </div>
-        </div>
-
-        <hr>
-
-        <div id="prescriptions">
-            <div class="row">
-                <div class="col-10">
-                    <h2>Prescriptions</h2>
+                <div class="row">
                 </div>
-                <div class="col-2 doc-viewPat-button"><a href="">Add Prescription</a></div>
             </div>
-            <div class="row">
-            </div>
-        </div>
 
-    </div>
-</body>
+            <hr>
+
+            <div id="prescriptions">
+                <div class="row">
+                    <div class="col-10">
+                        <h2>Prescriptions</h2>
+                    </div>
+                    <div class="col-2 doc-viewPat-button"><a href="">Add Prescription</a></div>
+                </div>
+                <div class="row">
+                    <tr><td>Blood Pressure Level : </td><td><input type="text" name = "bp_level"/></td></tr>
+                            <tr><td>Weight: </td><td><input type="text" name = "weight"/></td></tr>
+                            <tr><td>Height: </td><td><input type="text" name = "height"/></td></tr>
+                            <tr><td>Allergies: </td><td><input type="text" name = "allergies"/></td></tr>
+                            <tr><td>Diagnosis: </td><td><input type="text" name = "diagnosis"/></td></tr>
+                            <tr><td>Medication: </td><td><input type="text" name = "medication"/></td></tr>  
+                            <tr><td><input type="submit" name="Add Record" value="Add Record"></td></tr>
+                </div>
+            </div>
+
+        </div>
+    </body>
 
 </html>
