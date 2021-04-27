@@ -47,8 +47,11 @@
             </div>
             <div class="row">
                 <ul style="list-style-type: none;">
-                    <li id="patientDOB">DOB: 14/10/1997</li>
-                    <li id="patientGender">Gender: M</li>
+                    <li id="patientDOB">DOB: ${patient.getDob()}</li>
+                    <li id="address">Address: ${patient.getHouse_no()}, ${patient.getHouse_no()}, ${patient.getStreet()}, ${patient.getCity()}</li>
+                    <li id="age">DOB: ${patient.getAge()}</li>
+                    <li id="email">Email: ${patient.getEmail()}</li>
+                    <!--li id="patientGender">Gender: M</li-->
                 </ul>
             </div>
         </div>
