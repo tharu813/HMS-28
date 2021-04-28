@@ -118,7 +118,7 @@
             </div>
 
             <hr>
-
+ 
             <div id="prescriptions">
                 <div class="row">
                     <div class="col-10">
@@ -126,38 +126,38 @@
                     </div>
                     <div class="col-2 doc-viewPat-button"><a href="">Add Prescription</a></div>
                 </div>
-<!--                
+     <!--
 <form action = "AddEMRServlet" method = "POST">           
 <!--                            <tr><td><input type="submit" name="Add Record" value="Add Record"></td></tr>-->
                     <table>
                     
                         <tr><td><label for="blp">Blood Pressure Level:</label>
                         <input type="bloodpressure" class="form-control" id="inputbpl" aria-describedby="bpl" placeholder="Enter Blood Pressure Level">
-                            </td><td></td>
+                            </td></td>
                             <td>
                     <label for="blp">Weight:</label>
                         <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">   
-                            </td>
+                            </td></tr>
                         <td><label for="blp">Height:</label>
                         <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">   
                       </td>
                    <td> <label for="blp">Allergies:</label>
                         <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">   
-                   </td>
-                  <td>  <label for="blp">Diagnosis:</label>
+                   </td></tr>
+                  </tr><td><label for="blp">Diagnosis:</label>
                         <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">   
                  </td>   
-                 <td>   <label for="blp">Medication:</label>
+                 <td><label for="blp">Medication:</label>
                         <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">  
-                        <br>
                  </td></tr>
+<tr><td>
                   <div class="container">
              <div class="row">
                <div class="col">
                 <a href="#!" class="btn btn-primary btn-sm">Submit Records</a>
                      </div>
                         </div>
-                        
+                  </td></tr>                    
                 </form>    
 
         </div>
