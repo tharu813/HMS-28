@@ -67,33 +67,32 @@
                 </div>
                 <div class="row">
                     <ul style="list-style-type: none;">
-                    <form action = "AddEMRServlet" method = "POST">           
-<!--                            <tr><td><input type="submit" name="Add Record" value="Add Record"></td></tr>-->
+                    <form action = "AddEMRServlet" method = "POST">   
                     <table>
                     
                     <label for="blp">Blood Pressure Level:</label>
-                        <input type="bloodpressure" class="form-control" id="inputbpl" aria-describedby="bpl" placeholder="Enter Blood Pressure Level">
-                        
-                    
-                    <label for="blp">Weight:</label>
-                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">   
+                        <input type="bloodpressure" class="form-control" id="inputbpl" aria-describedby="bpl" placeholder="Enter BPL" name = "bp_level"/>
+                      
+                    <label for="wit">Weight:</label>
+                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight" name = "weight"/>   
                        
-                    <label for="blp">Height:</label>
-                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">   
+                    <label for="hit">Height:</label>
+                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="hit" placeholder="Enter Height" name = "height"/>   
                     
-                    <label for="blp">Allergies:</label>
-                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">   
+                    <label for="alp">Allergies:</label>
+                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="alp" placeholder="Enter Allergies" name = "allergies"/>   
                     
-                    <label for="blp">Diagnosis:</label>
-                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">   
+                    <label for="dia">Diagnosis:</label>
+                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="dia" placeholder="Enter Diagnosis" name = "diagnosis"/>   
                     
-                    <label for="blp">Medication:</label>
-                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">  
+                    <label for="medi">Medication:</label>
+                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="medi" placeholder="Enter Medication" name = "medication"/>  
+                        
                         <br>
                   <div class="container">
              <div class="row">
                <div class="col">
-                <a href="#!" class="btn btn-primary btn-sm">Submit Records</a>
+                <a href="#!" class="btn btn-primary btn-sm" input type="submit" name="Add Record" value="Add Record"  >Submit Records</a>
                      </div>
                         </div>
                         
@@ -126,10 +125,8 @@
                     </div>
                     <div class="col-2 doc-viewPat-button"><a href="">Add Prescription</a></div>
                 </div>
-     <!--
-<form action = "AddEMRServlet" method = "POST">           
-<!--                            <tr><td><input type="submit" name="Add Record" value="Add Record"></td></tr>-->
-<ul style="list-style-type: none;">
+                <form action = "AddEMRServlet" method = "POST">          
+                    <ul style="list-style-type: none;">
                     <table>
                     
                         <tr><td><label for="blp">Blood Pressure Level:</label>
@@ -151,9 +148,9 @@
                  <td><label for="blp">Medication:</label>
                         <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">  
                  </td></tr>
-</ul>
-<tr><td>
-                  <div class="container">
+                </ul>
+                <tr><td>
+             <div class="container">
              <div class="row">
                <div class="col">
                 <a href="#!" class="btn btn-primary btn-sm">Submit Records</a>
