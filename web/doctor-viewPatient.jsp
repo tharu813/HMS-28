@@ -130,30 +130,30 @@
                     <table>
                     
                         <tr><td><label for="blp">Blood Pressure Level:</label>
-                        <input type="bloodpressure" class="form-control" id="inputbpl" aria-describedby="bpl" placeholder="Enter Blood Pressure Level">
+                        <input type="bloodpressure" class="form-control" id="inputbpl" aria-describedby="bpl" placeholder="Enter Blood Pressure Level" name = "bp_level"/>
                             </td></td>
                             <td>
                     <label for="blp">Weight:</label>
-                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">   
+                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight" name = "weight"/>   
                             </td></tr>
                         <td><label for="blp">Height:</label>
-                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">   
+                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Height" name = "height"/>   
                       </td>
                    <td> <label for="blp">Allergies:</label>
-                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">   
+                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Allergies" name = "allergies"/>   
                    </td></tr>
                   </tr><td><label for="blp">Diagnosis:</label>
-                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">   
+                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Diagnosis" name = "diagnosis"/>   
                  </td>   
                  <td><label for="blp">Medication:</label>
-                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">  
+                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Medication" name = "medication"/>  
                  </td></tr>
                 </ul>
                 <tr><td>
              <div class="container">
              <div class="row">
                <div class="col">
-                <a href="#!" class="btn btn-primary btn-sm">Submit Records</a>
+                <a href="#!" class="btn btn-primary btn-sm" input type="submit" name="Add Record" value="Add Record">Submit Records</a>
                      </div>
                         </div>
                   </td></tr>                    
