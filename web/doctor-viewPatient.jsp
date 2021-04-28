@@ -131,25 +131,26 @@
 <!--                            <tr><td><input type="submit" name="Add Record" value="Add Record"></td></tr>-->
                     <table>
                     
-                    <label for="blp">Blood Pressure Level:</label>
+                        <tr><td><label for="blp">Blood Pressure Level:</label>
                         <input type="bloodpressure" class="form-control" id="inputbpl" aria-describedby="bpl" placeholder="Enter Blood Pressure Level">
-                        
-                    
+                            </td><td></td>
+                            <td>
                     <label for="blp">Weight:</label>
                         <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">   
-                       
-                    <label for="blp">Height:</label>
+                            </td>
+                        <td><label for="blp">Height:</label>
                         <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">   
-                    
-                    <label for="blp">Allergies:</label>
+                      </td>
+                   <td> <label for="blp">Allergies:</label>
                         <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">   
-                    
-                    <label for="blp">Diagnosis:</label>
+                   </td>
+                  <td>  <label for="blp">Diagnosis:</label>
                         <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">   
-                    
-                    <label for="blp">Medication:</label>
+                 </td>   
+                 <td>   <label for="blp">Medication:</label>
                         <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">  
                         <br>
+                 </td></tr>
                   <div class="container">
              <div class="row">
                <div class="col">
