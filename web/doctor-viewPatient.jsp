@@ -97,7 +97,7 @@
                      </div>
                         </div>
                         
-                    </form>    
+                </form>    
                     </table>
                     </ul>
 
@@ -126,16 +126,38 @@
                     </div>
                     <div class="col-2 doc-viewPat-button"><a href="">Add Prescription</a></div>
                 </div>
-                <div class="row">
-                    <tr><td>Blood Pressure Level : </td><td><input type="text" name = "bp_level"/></td></tr>
-                            <tr><td>Weight: </td><td><input type="text" name = "weight"/></td></tr>
-                            <tr><td>Height: </td><td><input type="text" name = "height"/></td></tr>
-                            <tr><td>Allergies: </td><td><input type="text" name = "allergies"/></td></tr>
-                            <tr><td>Diagnosis: </td><td><input type="text" name = "diagnosis"/></td></tr>
-                            <tr><td>Medication: </td><td><input type="text" name = "medication"/></td></tr>  
-                            <tr><td><input type="submit" name="Add Record" value="Add Record"></td></tr>
-                </div>
-            </div>
+<!--                
+<form action = "AddEMRServlet" method = "POST">           
+<!--                            <tr><td><input type="submit" name="Add Record" value="Add Record"></td></tr>-->
+                    <table>
+                    
+                    <label for="blp">Blood Pressure Level:</label>
+                        <input type="bloodpressure" class="form-control" id="inputbpl" aria-describedby="bpl" placeholder="Enter Blood Pressure Level">
+                        
+                    
+                    <label for="blp">Weight:</label>
+                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">   
+                       
+                    <label for="blp">Height:</label>
+                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">   
+                    
+                    <label for="blp">Allergies:</label>
+                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">   
+                    
+                    <label for="blp">Diagnosis:</label>
+                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">   
+                    
+                    <label for="blp">Medication:</label>
+                        <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">  
+                        <br>
+                  <div class="container">
+             <div class="row">
+               <div class="col">
+                <a href="#!" class="btn btn-primary btn-sm">Submit Records</a>
+                     </div>
+                        </div>
+                        
+                </form>    
 
         </div>
     </body>
