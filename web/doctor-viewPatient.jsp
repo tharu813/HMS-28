@@ -129,6 +129,7 @@
      <!--
 <form action = "AddEMRServlet" method = "POST">           
 <!--                            <tr><td><input type="submit" name="Add Record" value="Add Record"></td></tr>-->
+<ul style="list-style-type: none;">
                     <table>
                     
                         <tr><td><label for="blp">Blood Pressure Level:</label>
@@ -150,6 +151,7 @@
                  <td><label for="blp">Medication:</label>
                         <input type="weight" class="form-control" id="inputbpl" aria-describedby="wit" placeholder="Enter Weight">  
                  </td></tr>
+</ul>
 <tr><td>
                   <div class="container">
              <div class="row">
