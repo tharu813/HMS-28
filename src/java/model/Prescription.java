@@ -17,6 +17,8 @@ public class Prescription {
     private String further_treatment;
     private String prescribed_for;
     private String prescribed_by;
+      
+    public Prescription() {}
 
     public Prescription(int prescription_id, String diagnosis, String reason, String further_treatment, String prescribed_for, String prescribed_by) {
         this.prescription_id = prescription_id;
@@ -53,6 +55,26 @@ public class Prescription {
 
     public int getPrescription_id() {
         return prescription_id;
+    }
+
+    public void setDiagnosis(String diagnosis) {
+        this.diagnosis = diagnosis;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
+    public void setFurther_treatment(String further_treatment) {
+        this.further_treatment = further_treatment;
+    }
+
+    public void setPrescribed_for(String prescribed_for) {
+        this.prescribed_for = prescribed_for;
+    }
+
+    public void setPrescribed_by(String prescribed_by) {
+        this.prescribed_by = prescribed_by;
     }
     
     
