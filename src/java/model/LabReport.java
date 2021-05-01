@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import java.io.File;
@@ -13,17 +8,17 @@ import java.sql.Date;
  * @author THARUSHI
  */
 public class LabReport {
-    
-   
-private int ref_id;
-private String patient_id;
-private String doctor_id;
-private Date date;
-private String test_requested; 
-private String result; 
-private short state;
 
-    public LabReport(int ref_id, String patient_id, String doctor_id, Date date, String test_requested, String result, short state) {
+
+    private int ref_id;
+    private String patient_id;
+    private String doctor_id;
+    private String date;
+    private String test_requested;
+    private String result;
+    private int state;
+
+    public LabReport(int ref_id, String patient_id, String doctor_id, String date, String test_requested, String result, int state) {
         this.ref_id = ref_id;
         this.patient_id = patient_id;
         this.doctor_id = doctor_id;
@@ -31,6 +26,10 @@ private short state;
         this.test_requested = test_requested;
         this.result = result;
         this.state = state;
+    }
+
+    public LabReport() {
+
     }
 
     public int getRef_id() {
@@ -45,7 +44,7 @@ private short state;
         return doctor_id;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -57,7 +56,7 @@ private short state;
         return result;
     }
 
-    public short getState() {
+    public int getState() {
         return state;
     }
 
@@ -73,7 +72,7 @@ private short state;
         this.doctor_id = doctor_id;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -85,7 +84,7 @@ private short state;
         this.result = result;
     }
 
-    public void setState(short state) {
+    public void setState(int state) {
         this.state = state;
     }
 

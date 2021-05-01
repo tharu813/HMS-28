@@ -19,6 +19,10 @@ public class Consultation_info {
     Time time;
     Date date;
 
+    public Consultation_info() {
+        
+    }
+    
     public Consultation_info(int consultation_id, int fee, Time time, Date date) {
         this.consultation_id = consultation_id;
         this.fee = fee;

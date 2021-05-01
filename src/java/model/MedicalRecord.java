@@ -19,6 +19,7 @@ public class MedicalRecord {
     private String patient_id;
     private String diagnosis;
     private String medication;
+    private String diagnoses;
 
     public MedicalRecord(){
     
@@ -99,6 +100,14 @@ public class MedicalRecord {
     public void setPatient_id(String patient_id) {
         this.patient_id = patient_id;
     }
+        public String getDiagnoses() {
+        return diagnoses;
+    }
+
+    public void setDiagnoses(String diagnoses) {
+        this.diagnoses = diagnoses;
+    }
+    
     
     
 }

@@ -78,7 +78,7 @@ public class AddEMRServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        Patient patient = (Patient) RequestHandler.retrieveAttribute(request, "patient");
+        Patient patient = (Patient) RequestHandler.fetchAttribute(request, "patient");
         String patientID = patient.getUserId();
         System.out.println(patientID);
 

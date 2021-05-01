@@ -9,11 +9,15 @@ package model;
  *
  * @author THARUSHI
  */
-public abstract class StaffUser extends User {
+public class StaffUser extends User {
     
     private String title;
     private String department;
 
+    public StaffUser() {
+        super();
+    }
+    
     public StaffUser(String userId, String username, String nic, String firstName, 
             String lastName, String email, String password, String contactNo, int userType,
             String title, String department) {

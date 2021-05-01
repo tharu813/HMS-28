@@ -8,22 +8,20 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.DBHandler;
-import model.Doctor;
-import model.Patient;
 
 /**
  *
  * @author THARUSHI
  */
-public class ViewPatientProfileServlet extends HttpServlet {
+public class DoctorViewAppointmentServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,10 +40,10 @@ public class ViewPatientProfileServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ViewPatientProfileServlet</title>");
+            out.println("<title>Servlet DoctorViewAppointmentServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ViewPatientProfileServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet DoctorViewAppointmentServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,7 +61,16 @@ public class ViewPatientProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        DBHandler dBHandler = new DBHandler();
+        try {
+            ArrayList<String[]> appointments = dBHandler.getAppointments(RequestHandler.getCurrentUser(request).getUserId());
+            RequestHandler.addAttribute(request, "appointments", appointments);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DoctorViewAppointmentServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(DoctorViewAppointmentServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        request.getRequestDispatcher("doctor-appointments.jsp").forward(request, response);
     }
 
     /**
@@ -77,25 +84,7 @@ public class ViewPatientProfileServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
-        PrintWriter out = response.getWriter();
-        String uname = request.getParameter("Patient Username");
-
-        DBHandler db = new DBHandler();
-
-        try {
-            
-            Patient p = db.fetchPatient(uname);
-            RequestHandler.addAttribute(request, "patient", p);
-            request.getRequestDispatcher("doctor-viewPatient.jsp").forward(request, response);
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(ViewPatientProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ViewPatientProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+        processRequest(request, response);
     }
 
     /**

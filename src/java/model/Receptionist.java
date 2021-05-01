@@ -12,6 +12,10 @@ package model;
 public class Receptionist extends StaffUser{
     
     private String receptionistId;
+    
+    public Receptionist() {
+        super();
+    }
 
     public Receptionist(String userId, String username, String nic, String firstName, String lastName, String email, String password, String contactNo, int userType, String title, String department) {
         super(userId, username, nic, firstName, lastName, email, password, contactNo, userType, title, department);

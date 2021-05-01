@@ -7,23 +7,21 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.DBHandler;
-import model.Doctor;
 import model.Patient;
+import model.User;
 
 /**
  *
- * @author THARUSHI
+ * @author Dilu
  */
-public class ViewPatientProfileServlet extends HttpServlet {
+@WebServlet(name = "createProfile", urlPatterns = {"/createProfile"})
+public class createProfile extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,10 +40,10 @@ public class ViewPatientProfileServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ViewPatientProfileServlet</title>");
+            out.println("<title>Servlet createProfile</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ViewPatientProfileServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet createProfile at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,7 +61,7 @@ public class ViewPatientProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        processRequest(request, response);
     }
 
     /**
@@ -77,25 +75,63 @@ public class ViewPatientProfileServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+       
+        PrintWriter resp = response.getWriter();
         
+ 
+             response.setContentType("text/html;charset=UTF-8");
+             
+        PrintWriter out=response.getWriter();
+        String UserId= request.getParameter("userId");
+        String username= request.getParameter("username");
+        String nic= request.getParameter("nic");
+        String firstName= request.getParameter("firstname");
+        String lastName= request.getParameter("lastName");
+        String email= request.getParameter("email");
+        String password= request.getParameter("password");
+        String contactNo= request.getParameter("contactNo");
+        String age = request.getParameter("age");
+        String dob= request.getParameter("dob"); 
+        String house_no= request.getParameter("house_no");
+        String street= request.getParameter("street");
+        String city= request.getParameter("city");
+        int regBy=1;
+        int userType = 6;
         
-        PrintWriter out = response.getWriter();
-        String uname = request.getParameter("Patient Username");
-
-        DBHandler db = new DBHandler();
-
-        try {
+        try
+        {
+            DBHandler con = new DBHandler(); 
+            boolean rslt=con.AddPatient(username,nic,firstName,lastName,email,password,contactNo,age,dob,house_no,street,city,userType,regBy);
+            if(rslt==true)
+                out.println("Patient has successfully registered");
+            else
+               out.println("Patient registration is failed");   
             
-            Patient p = db.fetchPatient(uname);
-            RequestHandler.addAttribute(request, "patient", p);
-            request.getRequestDispatcher("doctor-viewPatient.jsp").forward(request, response);
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(ViewPatientProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ViewPatientProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+        catch(Exception se)
+        {
+            out.println(se);
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
+
+
+
+
+
+
+
+
+//processRequest(request, response);
     }
 
     /**

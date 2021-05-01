@@ -16,6 +16,14 @@
         <servlet-name>AddEMRServlet</servlet-name>
         <servlet-class>controller.AddEMRServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddPrescriptionServlet</servlet-name>
+        <servlet-class>controller.AddPrescriptionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DoctorViewAppointmentServlet</servlet-name>
+        <servlet-class>controller.DoctorViewAppointmentServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ViewPatientProfile</servlet-name>
         <url-pattern>/ViewPatientProfile</url-pattern>
@@ -35,7 +43,14 @@
         <servlet-name>AddEMRServlet</servlet-name>
         <url-pattern>/AddEMRServlet</url-pattern>
     </servlet-mapping>
-    
+    <servlet-mapping>
+        <servlet-name>AddPrescriptionServlet</servlet-name>
+        <url-pattern>/AddPrescriptionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DoctorViewAppointmentServlet</servlet-name>
+        <url-pattern>/DoctorViewAppointmentServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

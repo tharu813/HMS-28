@@ -10,20 +10,20 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.DBHandler;
-import model.Doctor;
 import model.Patient;
 
 /**
  *
- * @author THARUSHI
+ * @author Dilu
  */
-public class ViewPatientProfileServlet extends HttpServlet {
+@WebServlet(name = "ViewPatientProf", urlPatterns = {"/ViewPatientProf"})
+public class ViewPatientProf extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,10 +42,10 @@ public class ViewPatientProfileServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ViewPatientProfileServlet</title>");
+            out.println("<title>Servlet ViewPatientProf</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ViewPatientProfileServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ViewPatientProf at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,7 +63,7 @@ public class ViewPatientProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        processRequest(request, response);
     }
 
     /**
@@ -77,27 +77,32 @@ public class ViewPatientProfileServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
+
         PrintWriter out = response.getWriter();
-        String uname = request.getParameter("Patient Username");
+        String uname = request.getParameter("PatientUsername");
+        String availabilityDate = request.getParameter("availabilityDate");
 
-        DBHandler db = new DBHandler();
+        if (uname.length() > 0) {
+            DBHandler db = new DBHandler();
 
-        try {
-            
-            Patient p = db.fetchPatient(uname);
-            RequestHandler.addAttribute(request, "patient", p);
-            request.getRequestDispatcher("doctor-viewPatient.jsp").forward(request, response);
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(ViewPatientProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ViewPatientProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                Patient p = db.fetchPatient(uname);
+                request.setAttribute("patient", p);
+                request.getRequestDispatcher("receptionist-main.jsp").forward(request, response);
+
+            } catch (SQLException ex) {
+                Logger.getLogger(ViewPatientProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ViewPatientProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else if (availabilityDate.length() > 0) {
+            request.setAttribute("date", availabilityDate);
+            request.getRequestDispatcher("AppoinmentForm.jsp").forward(request, response);
         }
 
     }
 
+    //processRequest(request, response);
     /**
      * Returns a short description of the servlet.
      *

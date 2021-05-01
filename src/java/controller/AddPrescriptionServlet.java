@@ -7,23 +7,22 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.DBHandler;
-import model.Doctor;
+import model.MedicalRecord;
 import model.Patient;
+import model.Prescription;
 
 /**
  *
  * @author THARUSHI
  */
-public class ViewPatientProfileServlet extends HttpServlet {
+public class AddPrescriptionServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,10 +41,10 @@ public class ViewPatientProfileServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ViewPatientProfileServlet</title>");
+            out.println("<title>Servlet AddPrescriptionServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ViewPatientProfileServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AddPrescriptionServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,7 +62,7 @@ public class ViewPatientProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        processRequest(request, response);
     }
 
     /**
@@ -77,24 +76,49 @@ public class ViewPatientProfileServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
-        PrintWriter out = response.getWriter();
-        String uname = request.getParameter("Patient Username");
 
-        DBHandler db = new DBHandler();
+         Patient patient = (Patient) RequestHandler.fetchAttribute(request, "patient");
+         String doctorID = RequestHandler.getCurrentUser(request).getUserId();
+         
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        
+        String diagnosis = request.getParameter("diagnosis");
+        String reason = request.getParameter("reason");
+        String further_treatment = request.getParameter("further_treatment");
+        
+        int numOfDrugs = Integer.parseInt(request.getParameter("numOfLines"));
+        ArrayList<String> drugList = new ArrayList<>();
+        String drug = "";
+
+        for (int n = 0; n < numOfDrugs; n++){
+            String drugText = request.getParameter("drug"+(n+1));
+            String doseText = request.getParameter("dose"+(n+1));
+            drug = drugText + ", " + doseText;
+            drugList.add(drug);
+        }
 
         try {
-            
-            Patient p = db.fetchPatient(uname);
-            RequestHandler.addAttribute(request, "patient", p);
-            request.getRequestDispatcher("doctor-viewPatient.jsp").forward(request, response);
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(ViewPatientProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ViewPatientProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
+            DBHandler dbObj = new DBHandler();
+            int presID = Integer.parseInt(dbObj.generateID("prescription"));
+
+            Prescription pres = new Prescription(presID, diagnosis, reason, further_treatment, patient.getUserId(), doctorID);                   
+
+            int status = dbObj.addPrescription(pres, drugList);
+            if (status > 0) {
+                out.println("<h1><center>Prescription uploaded successfully!</h1>");
+                RequestDispatcher req = request.getRequestDispatcher("doctor-viewPatient.jsp");
+                req.include(request, response);
+            } else {
+                out.println("Something went wrong. prescription was not uploaded");
+            }
+
+        } catch (NumberFormatException se) {
+            System.out.print(se);
+        } catch (Exception e) {
+            System.out.print(e);
         }
+        
 
     }
 

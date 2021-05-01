@@ -13,7 +13,11 @@ public class Doctor extends StaffUser{
     
     private String specialization;
     private int slmcNo;
-
+    
+    public Doctor() {
+        super();
+    }
+    
     public Doctor(String userId, String username, String nic, String firstName, 
             String lastName, String email, String password, String contactNo, int userType,
             String title, String department, String specialization, int slmcNo) {
