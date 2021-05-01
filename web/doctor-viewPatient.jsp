@@ -4,8 +4,6 @@
     Author     : THARUSHI
 --%>
 
-
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +18,43 @@
 
         <script src="bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
 
+        <script>
+            function enableAddButton() {
+                document.getElementById("addMoreDrugsBtn").disabled = false;
+            }
+
+            function addDrugLine() {
+                var nextLineNum = parseInt(document.getElementById("idNumOfLines").value) + 1;
+                console.log(nextLineNum);
+
+                var container = document.getElementById("drugLines");
+                
+                var tr = document.createElement("tr");
+
+                var td1 = document.createElement("td");
+                var drugInput = document.createElement("input");
+                drugInput.type = "text";
+                drugInput.placeholder = "Drug";
+                drugInput.name = "drug" + nextLineNum;
+                
+                td1.appendChild(drugInput);
+                tr.appendChild(td1);
+                
+                var td2 = document.createElement("td");
+                var doseInput = document.createElement("input");
+                doseInput.type = "text";
+                doseInput.placeholder = "Dose";
+                doseInput.name = "dose" + nextLineNum;
+                
+                td2.appendChild(doseInput);
+                tr.appendChild(td2);
+                
+                container.appendChild(tr);
+                document.getElementById("idNumOfLines").value = nextLineNum;
+
+            }
+        </script>
+
         <title>Doctor</title>
     </head>
 
@@ -27,15 +62,13 @@
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
             <div class="navbar-brand">
                 <span id="doctorFullName">${user.getFirstName()} ${user.getLastName()}</span>
-                <span id="doctorTitle">(Psychiatrist)</span>
+                <span id="doctorTitle">${ user.getTitle() }</span>
             </div>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="#">Appointments</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">My Account</a>
-                </li>
+
             </ul>
         </nav>
 
@@ -65,7 +98,6 @@
                     <div class="col-10">
                         <h2>Medical Records</h2>
                     </div>
-                    <div class="col-2 doc-viewPat-button"><a href="">Add Record</a></div>
                 </div>
                 <div class="row">
                     <form action = "AddEMRServlet" method = "POST">
@@ -76,7 +108,7 @@
                             <tr><td>Allergies: </td><td><input type="text" name = "allergies"/></td></tr>
                             <tr><td>Diagnosis: </td><td><input type="text" name = "diagnosis"/></td></tr>
                             <tr><td>Medication: </td><td><input type="text" name = "medication"/></td></tr>  
-                            <tr><td><input type="submit" name="Add Record" value="Add Record"></td></tr>
+                            <tr><td><input type="submit" name="Add Record" value="Add Record" class="btn btn-secondary"></td></tr>
 
                         </table>
 
@@ -85,18 +117,7 @@
                 </div>
             </div>
 
-            <hr>
-
-            <div id="labReports">
-                <div class="row">
-                    <div class="col-10">
-                        <h2>Lab Reports</h2>
-                    </div>
-                    <div class="col-2 doc-viewPat-button"><a href="">Request New Report</a></div>
-                </div>
-                <div class="row">
-                </div>
-            </div>
+        
 
             <hr>
 
@@ -105,16 +126,32 @@
                     <div class="col-10">
                         <h2>Prescriptions</h2>
                     </div>
-                    <div class="col-2 doc-viewPat-button"><a href="">Add Prescription</a></div>
                 </div>
                 <div class="row">
-                    <tr><td>Blood Pressure Level : </td><td><input type="text" name = "bp_level"/></td></tr>
-                            <tr><td>Weight: </td><td><input type="text" name = "weight"/></td></tr>
-                            <tr><td>Height: </td><td><input type="text" name = "height"/></td></tr>
-                            <tr><td>Allergies: </td><td><input type="text" name = "allergies"/></td></tr>
-                            <tr><td>Diagnosis: </td><td><input type="text" name = "diagnosis"/></td></tr>
-                            <tr><td>Medication: </td><td><input type="text" name = "medication"/></td></tr>  
-                            <tr><td><input type="submit" name="Add Record" value="Add Record"></td></tr>
+                    <form action = "AddPrescriptionServlet" method = "POST">
+                        <table  id="drugLines">
+                            <tr><td>Diagnosis : </td><td><input type="text" name = "diagnosis"/></td></tr>
+                            <tr><td>Reason: </td><td><input type="text" name = "reason"/></td></tr>
+                            <tr><td>Further Treatment: </td><td><input type="text" name = "further_treatment"/></td></tr>
+                            <tr>
+                                <td>Drugs: </td>
+                                <td><button type="button" disabled="true" id="addMoreDrugsBtn" onclick="addDrugLine();">Add More Drugs</button></td>
+                            </tr>
+                            <tr>
+                            <input type="number" hidden="true" name="numOfLines" id="idNumOfLines" value="1"/>
+                                <tr>
+                                    <td>
+                                        <input type="text" placeholder="Drug" name="drug1"/>
+                                    </td>
+                                    <td>
+                                        <input type="text" placeholder="Dose" name="dose1" oninput="enableAddButton();"/>
+                                    </td>
+                                </tr>
+                            </tr>
+                            
+                        </table>
+                        <input type="submit" name="Add Prescription" value="Add Prescription" class="btn btn-secondary">
+                    </form>
                 </div>
             </div>
 
