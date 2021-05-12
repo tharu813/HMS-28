@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.DBHandler;
 import model.Doctor;
+import model.MedicalRecord;
 import model.Patient;
 
 /**
@@ -87,7 +88,10 @@ public class ViewPatientProfileServlet extends HttpServlet {
         try {
             
             Patient p = db.fetchPatient(uname);
+            MedicalRecord medRec = db.fetchEMR(p.getUserId());
+            System.out.println(medRec == null);
             RequestHandler.addAttribute(request, "patient", p);
+            RequestHandler.addAttribute(request, "medical_record", medRec);
             request.getRequestDispatcher("doctor-viewPatient.jsp").forward(request, response);
             
         } catch (SQLException ex) {
