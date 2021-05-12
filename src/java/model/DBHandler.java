@@ -202,58 +202,38 @@ public class DBHandler {
         return null;
     }
 
-    /* public MedicalRecord fetchEMR(Patient p) throws SQLException, ClassNotFoundException {
+    public MedicalRecord fetchEMR(String patientID) throws SQLException, ClassNotFoundException {
         try {
             Connection con = createConnection();
 
             PreparedStatement ps = con.prepareStatement("select * from medical_record where patient_id = ?");
-            
-            Patient p = new Patient();
-            ps.setString(1, uname);
+
+            ps.setString(1, patientID);
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                String userID = rs.getString("user_id");
-                String nic = rs.getString("nic");
-                String fName = rs.getString("first_name");
-                String lName = rs.getString("last_name");
-                String email = rs.getString("email");
-                String password = rs.getString("password");
-                int userType = rs.getInt("user_type");
+                int emrID = rs.getInt("emr_id");
+                int height = rs.getInt("height");
+                int weight = rs.getInt("weight");
+                String bp_level = rs.getString("bp_level");
+                String allergies = rs.getString("allergies");
+                String diagnosis = rs.getString("diagnosis");
+                String medication = rs.getString("medication");
 
-                ps = con.prepareStatement("select * from patient where patient_id = ?");
-                ps.setString(1, userID);
+                MedicalRecord medRec = new MedicalRecord(emrID, bp_level,
+                        height, weight, allergies, patientID, diagnosis, medication);
+                con.close();
 
-                rs = ps.executeQuery();
-
-                if (rs.next()) {
-                    int age = rs.getInt("age");
-                    Date dob = rs.getDate("dob");
-                    int house_no = Integer.parseInt(rs.getString("house_no"));
-                    String street = rs.getString("street");
-                    String city = rs.getString("city");
-                    String regBy = rs.getString("registered_by");
-
-                    ps = con.prepareStatement("select * from user_contact where user_id = ? ;");
-                    ps.setString(1, userID);
-
-                    rs = ps.executeQuery();
-
-                    if (rs.next()) {
-                        String contact_no = rs.getString("contact_no");
-
-                        Patient p = new Patient(age, dob, house_no, street, city, regBy, userID, uname, nic, fName, lName, email, password, contact_no, userType);
-                        return p;
-                    }
-                }
-
+                return medRec;
             }
+
         } catch (Exception ex) {
             ex.printStackTrace();
             System.out.println(ex.getMessage());
         }
         return null;
-    }*/
+    }
+
     public int addEMR(MedicalRecord emr, Patient p) throws SQLException, ClassNotFoundException {
 
         int status = 0;
@@ -334,7 +314,7 @@ public class DBHandler {
         ps.setString(1, doctorID);
 
         ResultSet rs = ps.executeQuery();
-        
+
         PreparedStatement ps2 = con.prepareStatement("SELECT * FROM user where user_id = ?;");
         ResultSet rs2;
 
@@ -342,27 +322,28 @@ public class DBHandler {
 
         while (rs.next()) {
             Date date = rs.getDate("date");
-            String dateString = new  SimpleDateFormat("yyyy-MM-dd").format(date);
+            String dateString = new SimpleDateFormat("yyyy-MM-dd").format(date);
             Time time = rs.getTime("time");
             String timeString = time.toString();
-            
+            String appointmentID = String.valueOf(rs.getInt("appointment_id"));
+
             String patientID = rs.getString("patient_id");
-                    
+
             ps2.setString(1, patientID);
             rs2 = ps2.executeQuery();
-            
+
             if (rs2.next()) {
                 String fName = rs2.getString("first_name");
                 String lName = rs2.getString("last_name");
                 String fullName = fName + " " + lName;
-                
-                appointments.add(new String[] {fullName, dateString, timeString});
-            }            
+
+                appointments.add(new String[]{fullName, dateString, timeString, appointmentID});
+            }
         }
 
         return appointments;
     }
-    
+
     public boolean AddPatient(String username, String nic, String firstName, String lastName, String email, String password, String contactNo, String age, String dob, String house_no, String street, String city, int userType, int regBy) throws ClassNotFoundException, SQLException {
 
         PreparedStatement ps = createConnection().prepareStatement(" INSERT INTO user VALUES (?,?,?,?,?,?,?,?); ");
@@ -405,7 +386,7 @@ public class DBHandler {
         }
 
     }
-    
+
     public Patient updatePatient(String uId) throws SQLException, ClassNotFoundException {
         try {
             int age = 0;
@@ -415,7 +396,7 @@ public class DBHandler {
             String city = "";
             String regBy = "";
             String contact_no = "";
-                    
+
             Connection con = createConnection();
 
             PreparedStatement ps = con.prepareStatement("select * from user where user_id = ?");
@@ -430,8 +411,7 @@ public class DBHandler {
                 String email = rs.getString("email");
                 String password = rs.getString("password");
                 int userType = rs.getInt("user_type");
-                
-                
+
                 ps = con.prepareStatement("select * from patient where patient_id = ?");
                 ps.setString(1, userID);
 
@@ -444,10 +424,10 @@ public class DBHandler {
                     street = rs.getString("street");
                     city = rs.getString("city");
                     regBy = rs.getString("registered_by");
-                  
+
                     ps = con.prepareStatement("select * from user_contact where user_id = ? ;");
                     ps.setString(1, userID);
-                    
+
                     rs = ps.executeQuery();
 
                     if (rs.next()) {
@@ -458,11 +438,11 @@ public class DBHandler {
                     }
                 }
                 String uname = null;
-                
-                Patient p = new Patient(age,dob, house_no, street, city, regBy, userID, uname, nic, fName, lName, email, password, contact_no, userType);
+
+                Patient p = new Patient(age, dob, house_no, street, city, regBy, userID, uname, nic, fName, lName, email, password, contact_no, userType);
                 return p;
 
-            }else{
+            } else {
                 return null;
             }
         } catch (Exception ex) {
@@ -471,7 +451,84 @@ public class DBHandler {
             return null;
         }
         //return null;
-        
-        
+
     }
+
+    public int addLabTest(LabReport lr) throws SQLException, ClassNotFoundException {
+
+        int status = 0;
+        try {
+
+            Connection con = createConnection();
+
+            PreparedStatement ps = con.prepareStatement("insert into lab_report_details(ref_id, patient_id, doctor_id, date, test_requested, result, state) values (default,?,?,?,?,?,?)");
+
+            ps.setString(1, lr.getPatient_id());
+            ps.setString(2, lr.getDoctor_id());
+            ps.setString(3, lr.getDate());
+            ps.setString(4, lr.getTest_requested());
+            ps.setString(5, lr.getResult());
+            ps.setInt(6, lr.getState());
+
+            status = ps.executeUpdate();
+            con.close();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println(ex.getMessage());
+        }
+        return status;
+    }
+
+    public int updateEMR(String patientID, MedicalRecord emr) throws SQLException, ClassNotFoundException {
+
+        int status = 0;
+        try {
+
+            Connection con = createConnection();
+
+            PreparedStatement ps = con.prepareStatement("update medical_record "
+                    + "set bp_level = ?, weight = ?, height = ?, "
+                    + "allergies = ?, diagnosis = ?, medication = ? where patient_id = ? ");
+
+            ps.setString(1, emr.getBp_level());
+            ps.setInt(2, emr.getWeight());
+            ps.setInt(3, emr.getHeight());
+            ps.setString(4, emr.getAllergies());
+            ps.setString(5, emr.getDiagnosis());
+            ps.setString(6, emr.getMedication());
+            ps.setString(7, patientID);
+
+            status = ps.executeUpdate();
+            con.close();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println(ex.getMessage());
+        }
+        return status;
+
+    }
+
+    public void deleteAppointment(int appointmentID) throws SQLException, ClassNotFoundException {
+
+       
+
+        try {
+
+            Connection con = createConnection();
+            PreparedStatement ps = con.prepareStatement("DELETE FROM appointment WHERE appointment_id = ?");
+            ps.setInt(1, appointmentID);
+            ps.executeUpdate();
+            
+            con.close();
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println(ex.getMessage());
+        }
+       
+    }
+
+   
 }
