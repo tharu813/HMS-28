@@ -1,10 +1,80 @@
 .doc-viewPat-button a:link, a:visited {
     padding: 5%;
-    background-color: gray; 
     color: white;
     text-decoration: none;
 }
 
 .doc-viewPat-button a:hover, a:active {
-    background-color: black;
+   color: gray;
 }
+
+.navbar-nav > li{
+    padding-left:30px;
+    padding-right:30px;
+}
+
+.navbar-nav > li{
+    margin-left:30px;
+    margin-right:30px;
+}
+#NavigationBar{
+    padding-top: 0.65%;
+    padding-bottom: 0.65%;
+}
+
+#patientName{
+    margin-top: 1%;
+    margin-left: 2%;
+    margin-right: 2%;
+
+}
+
+#patientProfile{
+
+    margin-right: 6%;
+    margin-left: 6%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    background-color: #eaf3ee;
+    
+    
+
+}
+
+
+
+#profileheading{
+    align-self: center;
+    margin-top: 2%;
+    font-family: Gill Sans, sans-serif;
+    font-weight: bold;
+    
+}
+
+#patientInfo{
+    margin-left: 3%;
+    margin-right: 3%;
+    font-family: Gill Sans, sans-serif;
+}
+
+#patientdata{
+    margin-top: 1%;
+    font-size: 17px;
+    margin-left: 2%;
+    margin-right: 2%;
+    
+}
+
+#EMRdata{
+    margin-top: 1%;
+    font-size: 17px;
+    margin-left: 2%;
+    margin-right: 2%;
+    
+}
+
+
+
+
+
+
